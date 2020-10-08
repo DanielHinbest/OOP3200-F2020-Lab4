@@ -28,8 +28,8 @@ public:
 	
 	// Rule of three:
 	~StandardDeck(); //Destructor
-	StandardDeck(const StandardDeck& other_deck); //Copy Constructor
-	StandardDeck& operator=(const StandardDeck& other_deck); //Assignment operator overload
+	StandardDeck(StandardDeck& other_deck); //Copy Constructor
+	StandardDeck& operator=(StandardDeck& other_deck); //Assignment operator overload
 	
 	// Accessors:
 	PlayingCard DrawNextCard();
@@ -38,6 +38,7 @@ public:
 		
 	// Mutators:
 	void Shuffle(PlayingCard cards[]);
+	void SetDeck(PlayingCard cards[]);
 
 private:
 	PlayingCard totalCards[52];

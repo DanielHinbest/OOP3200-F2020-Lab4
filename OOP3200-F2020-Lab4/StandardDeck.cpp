@@ -29,20 +29,25 @@ void StandardDeck::Initialize()
 StandardDeck::~StandardDeck()
 = default;
 
-StandardDeck::StandardDeck(const StandardDeck& other_deck)
+StandardDeck::StandardDeck(StandardDeck& other_deck)
 {
+	SetDeck(other_deck.totalCards);
 }
 
-StandardDeck& StandardDeck::operator=(const StandardDeck& other_deck)
+StandardDeck& StandardDeck::operator=(StandardDeck& other_deck)
 {
+	SetDeck(other_deck.totalCards);
+	return (*this);
 }
 
 PlayingCard StandardDeck::DrawNextCard()
 {
+	return PlayingCard();
 }
 
 int StandardDeck::CardsRemaining()
 {
+	return sizeof(totalCards) / 16;
 }
 
 PlayingCard StandardDeck::DrawRandomCard()
@@ -51,4 +56,12 @@ PlayingCard StandardDeck::DrawRandomCard()
 
 void StandardDeck::Shuffle(PlayingCard cards[])
 {
+}
+
+void StandardDeck::SetDeck(PlayingCard cards[])
+{
+	for (int i = 0; i <= 6; i++)
+	{
+		totalCards[i] = cards[i];
+	}
 }
