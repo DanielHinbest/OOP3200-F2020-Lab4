@@ -20,13 +20,28 @@
 
 class StandardDeck
 {
+public:
 	// Initialization:
-
+	StandardDeck();
+	//StandardDeck(PlayingCard* playingDeck);
+	virtual void Initialize();
+	
 	// Rule of three:
-
+	~StandardDeck(); //Destructor
+	StandardDeck(const StandardDeck& other_deck); //Copy Constructor
+	StandardDeck& operator=(const StandardDeck& other_deck); //Assignment operator overload
+	
 	// Accessors:
-
+	PlayingCard DrawNextCard();
+	int CardsRemaining();
+	PlayingCard DrawRandomCard();
+		
 	// Mutators:
+	void Shuffle(PlayingCard cards[]);
+
+private:
+	PlayingCard totalCards[52];
+	PlayingCard* ptr = totalCards;
 };
 
 #endif /* defined (__STANDARD_DECK__) */
