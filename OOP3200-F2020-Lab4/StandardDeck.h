@@ -11,11 +11,15 @@
  *	@since		Jul 2018
  *	@see		Bronson, G. (2012). A First Book of C++ (4th ed.). Boston, MA: Course Technology.
 */
-
+/* OOP 3200 - C++ Lab 5 - Collections
+ * Ryan Clayson and Daniel Hinbest
+ * 100558837		100717231
+ * October 11, 2020
+ */
 #pragma once
 #ifndef __STANDARD_DECK__
 #define __STANDARD_DECK__
-
+#include <vector>
 #include "PlayingCard.h"
 
 class StandardDeck
@@ -23,7 +27,8 @@ class StandardDeck
 public:
 	// Initialization:
 	StandardDeck();
-	//StandardDeck(PlayingCard* playingDeck);
+
+	//Virtual so that it can be overwridden
 	virtual void Initialize();
 	
 	// Rule of three:
@@ -32,17 +37,18 @@ public:
 	StandardDeck& operator=(StandardDeck& other_deck); //Assignment operator overload
 	
 	// Accessors:
-	PlayingCard DrawNextCard();
+	void ShowDeck();
 	int CardsRemaining();
-	PlayingCard DrawRandomCard();
 		
 	// Mutators:
-	void Shuffle(PlayingCard cards[]);
-	void SetDeck(PlayingCard cards[]);
+	void Shuffle();
+	void SetDeck(std::vector <PlayingCard> standard_deck);
+	void DrawRandomCard();
+	void DrawNextCard();
 
 private:
-	PlayingCard totalCards[52];
-	PlayingCard* ptr = totalCards;
+	std::vector <PlayingCard> totalCards;
+	bool createDeck;
 };
 
 #endif /* defined (__STANDARD_DECK__) */

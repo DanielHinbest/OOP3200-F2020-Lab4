@@ -1,29 +1,38 @@
+/* OOP 3200 - C++ Lab 5 - Collections
+ * Ryan Clayson and Daniel Hinbest
+ * 100558837		100717231
+ * October 11, 2020
+ */
 #include "StandardDeck.h"
+#include <ctime>
+#include <iostream>
 
-StandardDeck::StandardDeck()
+StandardDeck::StandardDeck():createDeck(false)
 {
 	Initialize();
 }
 
 void StandardDeck::Initialize()
 {
-	int suit, number = 1;
+	PlayingCard cards;
+	int suit = 0, number = 1;
 
-	if (ptr != 0)
+	if (createDeck != 0)
 	{
-		delete(totalCards);
+		totalCards.clear();
 	}
 
-	for (int i = 0; i <= 4; i++)
+	for (int i = 0; i <= 52; i++)
 	{
-		totalCards[i] = PlayingCard(number, suit, i, true);
+		cards = PlayingCard(number, suit, i, true);
+		totalCards.push_back(cards);
 		number++;
 		if (number == 14)
 		{
 			suit++;
 			number = 1;
 		}
-	}
+	}createDeck = true;
 }
 
 StandardDeck::~StandardDeck()
@@ -40,9 +49,9 @@ StandardDeck& StandardDeck::operator=(StandardDeck& other_deck)
 	return (*this);
 }
 
-PlayingCard StandardDeck::DrawNextCard()
+void StandardDeck::DrawNextCard()
 {
-	return PlayingCard();
+	//return PlayingCard();
 }
 
 int StandardDeck::CardsRemaining()
@@ -50,18 +59,36 @@ int StandardDeck::CardsRemaining()
 	return sizeof(totalCards) / 16;
 }
 
-PlayingCard StandardDeck::DrawRandomCard()
+void StandardDeck::DrawRandomCard()
 {
+	int randomValue;
+	srand(time(NULL));
+
+	randomValue = rand();
+	std::cout << totalCards[randomValue].GetSuit() << " " << totalCards[randomValue].GetRank();
 }
 
-void StandardDeck::Shuffle(PlayingCard cards[])
+void StandardDeck::Shuffle()
 {
-}
+	int numbers = totalCards.size();
+	int randomValueOne, randomValueTwo;
+	srand(time(NULL));
 
-void StandardDeck::SetDeck(PlayingCard cards[])
+	for (int i = 0; i <= totalCards.size(); i++)
+	{
+		randomValueOne = rand() % totalCards.size();
+		randomValueTwo = rand() % totalCards.size();
+	}
+	
+}
+void StandardDeck::ShowDeck()
+{
+	
+}
+void StandardDeck::SetDeck(std::vector <PlayingCard> standard_deck)
 {
 	for (int i = 0; i <= 6; i++)
 	{
-		totalCards[i] = cards[i];
+		totalCards[i] = standard_deck[i];
 	}
 }
