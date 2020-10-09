@@ -17,12 +17,12 @@ void StandardDeck::Initialize()
 	PlayingCard cards;
 	int suit = 0, number = 1;
 
-	if (createDeck != 0)
+	if (createDeck == true)
 	{
 		totalCards.clear();
 	}
 
-	for (int i = 0; i <= 52; i++)
+	for (int i = 0; i < 52; i++)
 	{
 		cards = PlayingCard(number, suit, i, true);
 		totalCards.push_back(cards);
@@ -32,7 +32,8 @@ void StandardDeck::Initialize()
 			suit++;
 			number = 1;
 		}
-	}createDeck = true;
+	}
+	createDeck = true;
 }
 
 StandardDeck::~StandardDeck()
@@ -51,12 +52,14 @@ StandardDeck& StandardDeck::operator=(StandardDeck& other_deck)
 
 void StandardDeck::DrawNextCard()
 {
-	//return PlayingCard();
+	std::cout << totalCards[0].GetRank() << " of " << totalCards[0].GetSuit();
+	totalCards.erase(totalCards.begin());
 }
 
 int StandardDeck::CardsRemaining()
 {
-	return sizeof(totalCards) / 16;
+	//return sizeof(totalCards) / 16;
+	return totalCards.size();
 }
 
 void StandardDeck::DrawRandomCard()
@@ -64,8 +67,8 @@ void StandardDeck::DrawRandomCard()
 	int randomValue;
 	srand(time(NULL));
 
-	randomValue = rand();
-	std::cout << totalCards[randomValue].GetSuit() << " " << totalCards[randomValue].GetRank();
+	randomValue = rand()  % totalCards.size();
+	std::cout << totalCards[randomValue].GetRank() << " of " << totalCards[randomValue].GetSuit();
 }
 
 void StandardDeck::Shuffle()
@@ -83,11 +86,16 @@ void StandardDeck::Shuffle()
 }
 void StandardDeck::ShowDeck()
 {
-	
+	for (int i = 0 ; i <= totalCards.size() - 1; i ++)
+	{
+		std::cout << " " << totalCards[i].GetRank() << " of " << totalCards[i].GetSuit() <<
+			std::endl;
+		
+	}
 }
 void StandardDeck::SetDeck(std::vector <PlayingCard> standard_deck)
 {
-	for (int i = 0; i <= 6; i++)
+	for (int i = 0; i <= CardsRemaining(); i++)
 	{
 		totalCards[i] = standard_deck[i];
 	}

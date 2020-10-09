@@ -19,35 +19,42 @@ int main()
 
 	// create a deck
 	StandardDeck standard_deck;
-	std::cout << "Deck is Created";
+	std::cout << "Deck is Created" << std::endl;
+	std::cout << "_______________" << std::endl;
 	
 	// Show the deck object as initialized
 	standard_deck.ShowDeck();
 	Pause();
 	
 	// Draw the next card and show it
-	std::cout << "Draw Next Card";
+	std::cout << "\nDraw Next Card" << std::endl;
+	std::cout << "______________" << std::endl;
 	standard_deck.DrawNextCard();
 	Pause();
 
 	// Draw a random card and show it
-	std::cout << "Draw Random Card";
+	std::cout << "\nDraw Random Card" << std::endl;
+	std::cout << "__________________" << std::endl;
 	standard_deck.DrawRandomCard();
 	Pause();
 	
 	// Show the deck with the remaining cards
-	std::cout << "Remaining Cards";
+	std::cout << "\nRemaining Cards" << std::endl;
+	std::cout << "_________________" << std::endl;
 	standard_deck.CardsRemaining();
+	standard_deck.ShowDeck();
 	Pause();
 
 	// Shuffle the deck and show the result
-	std::cout << "Shuffling Deck";
+	std::cout << "\nShuffling Deck" << std:: endl;
+	std::cout << "________________" << std::endl;
 	standard_deck.Shuffle();
 	standard_deck.ShowDeck();
 	Pause();
 
 	// Reset the deck and show the result
-	std::cout << "Reset Deck";
+	std::cout << "\nReset Deck" << std::endl;
+	std::cout << "____________" << std::endl;
 	standard_deck.Initialize();
 	standard_deck.ShowDeck();
 	

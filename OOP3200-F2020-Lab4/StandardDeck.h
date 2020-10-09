@@ -28,7 +28,7 @@ public:
 	// Initialization:
 	StandardDeck();
 
-	//Virtual so that it can be overwridden
+	//Virtual so that it can be overridden
 	virtual void Initialize();
 	
 	// Rule of three:
