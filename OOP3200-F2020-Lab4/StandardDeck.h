@@ -3,7 +3,7 @@
  *  In this lab you will create your own collection class called StandardDeck, which
  *	will 'contain' objects of the PlayingCard class.  The intent of the class is to
  *	represent a standard deck of 52 cards that might be useful in a card game type
- *	application.  
+ *	application.
  *
  *	@author		Thom MacDonald
  *	@author		Tom Tsiliopoulos
@@ -30,26 +30,31 @@ public:
 
 	//Virtual so that it can be overridden
 	virtual void Initialize();
-	
+
 	// Rule of three:
 	~StandardDeck(); //Destructor
 	StandardDeck(StandardDeck& other_deck); //Copy Constructor
 	StandardDeck& operator=(StandardDeck& other_deck); //Assignment operator overload
-	
+
 	// Accessors:
-	void ShowDeck();
+	//displays cards in the deck
+	void ShowDeckOfCards();
+	//shows remaining number of cards
 	int CardsRemaining();
-		
+
 	// Mutators:
+	//rearranges cards in deck
 	void Shuffle();
+	//Sets deck
 	void SetDeck(std::vector <PlayingCard> standard_deck);
+	//draws a random card and removes it from the deck of cards
 	void DrawRandomCard();
+	//draws card and removes it from the deck of cards
 	void DrawNextCard();
 
 private:
-	std::vector <PlayingCard> totalCards;
-	bool createDeck;
+	std::vector <PlayingCard> totalCards; //deck of cards
+	bool createDeck; //helps create deck
 };
 
 #endif /* defined (__STANDARD_DECK__) */
-
